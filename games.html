@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | iLoveBroccoli.com 🥦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER (same on every page) ===== -->
+    <header class="site-header">
+      <a class="logo" href="index.html">iLoveBroccoli<span class="dotcom">.com</span></a>
+      <span><span class="sparkle">✦</span> <b>the greenest site on the web</b> <span class="sparkle">✦</span></span>
+    </header>
+    <nav class="tabs">
+      <a href="index.html">🏠 Home</a>
+      <a href="games.html" class="active">🎮 Games</a>
+      <a href="broccolitube.html">📺 Broccoli-tube</a>
+      <a href="photobooth.html">📸 Photo Booth</a>
+    </nav>
+    <div class="ticker"><span>🎮 PICK A QUIZ ✦ ANSWER FAST FOR MORE POINTS ✦ CAN YOU GET A PERFECT SCORE? 🥦</span></div>
+    <br>
+
+    <!-- ===== STEP 1: PICK A QUIZ ===== -->
+    <section id="picker" class="grid quiz-picker">
+      <!-- the quiz cards get added here by game.js -->
+    </section>
+
+    <!-- ===== STEP 2: THE GAME ===== -->
+    <section id="game" class="game">
+      <div class="game-top">
+        <span id="qNumber">Question 1 of 10</span>
+        <span id="score">Score: 0</span>
+      </div>
+      <div class="question-text" id="qText"></div>
+      <div class="question-middle">
+        <div class="timer-circle" id="timerNum">20</div>
+        <div class="question-picture" id="qPicture"></div>
+        <div class="timer-circle" style="visibility:hidden"></div>
+      </div>
+      <div class="timer-bar"><div id="timerBar"></div></div>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback"></div>
+    </section>
+
+    <!-- ===== STEP 3: FINAL SCORE ===== -->
+    <section id="results" class="game">
+      <div class="window">
+        <div class="window-bar">results.exe <span class="dots"></span></div>
+        <div class="window-body center">
+          <h2>Quiz complete!</h2>
+          <p class="final-score" id="finalScore">0</p>
+          <p id="finalMessage" style="font-size:1.3rem;font-weight:800"></p>
+          <button class="btn pink" onclick="startQuiz(currentQuizKey)">🔁 Play again</button>
+          <button class="btn" onclick="showPicker()">🎮 Pick another quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>made with 💚 and 🥦 by students &nbsp;|&nbsp; iLoveBroccoli.com</footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

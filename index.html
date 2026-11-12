@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iLoveBroccoli.com 🥦</title>
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN: shows first, click to enter ===== -->
+  <div id="splash">
+    <div class="giant">🥦</div>
+    <div class="enter">CLICK TO ENTER!</div>
+    <small>🔊 turn your sound up 🔊</small>
+  </div>
+
+  <div class="page">
+
+    <!-- ===== HEADER (same on every page) ===== -->
+    <header class="site-header">
+      <a class="logo" href="index.html">iLoveBroccoli<span class="dotcom">.com</span></a>
+      <span><span class="sparkle">✦</span> <b>the greenest site on the web</b> <span class="sparkle">✦</span></span>
+    </header>
+    <nav class="tabs">
+      <a href="index.html" class="active">🏠 Home</a>
+      <a href="games.html">🎮 Games</a>
+      <a href="broccolitube.html">📺 Broccoli-tube</a>
+      <a href="photobooth.html">📸 Photo Booth</a>
+    </nav>
+    <div class="ticker"><span>
+      🥦 WELCOME TO iLOVEBROCCOLI.COM ✦ TEST YOUR BROCCOLI BRAIN IN THE GAMES SECTION ✦
+      PUT YOUR FACE ON THE BROCCOLI IN THE PHOTO BOOTH ✦ NEW VIDEOS COMING SOON TO BROCCOLI-TUBE ✦ EAT YOUR GREENS 🥦
+    </span></div>
+
+    <!-- ===== TOP SECTION ===== -->
+    <section class="hero">
+      <div class="window">
+        <div class="window-bar">welcome.exe <span class="dots"></span></div>
+        <div class="window-body">
+          <h1>Welcome, broccoli lovers!</h1>
+          <p>This is the internet's #1 home for everything broccoli. Play trivia, watch our videos,
+             and turn yourself into a broccoli in the photo booth.</p>
+          <a class="btn pink" href="photobooth.html">📸 Become the broccoli</a>
+        </div>
+      </div>
+
+      <div class="window pink">
+        <div class="window-bar">now_playing.mp3 <span class="dots"></span></div>
+        <div class="window-body">
+          <div id="spotifyPlayer"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THREE BIG BUTTON CARDS ===== -->
+    <section class="grid">
+      <a class="feature-card" href="games.html">
+        <div class="window">
+          <div class="window-bar">games <span class="dots"></span></div>
+          <div class="window-body">
+            <span class="big-emoji">🎮</span>
+            <h2>Broccoli Trivia</h2>
+            <p>How much do you REALLY know about broccoli?</p>
+          </div>
+        </div>
+      </a>
+      <a class="feature-card" href="broccolitube.html">
+        <div class="window pink">
+          <div class="window-bar">broccoli-tube <span class="dots"></span></div>
+          <div class="window-body">
+            <span class="big-emoji">📺</span>
+            <h2>Broccoli-tube</h2>
+            <p>Funny videos and interviews made by us.</p>
+          </div>
+        </div>
+      </a>
+      <a class="feature-card" href="photobooth.html">
+        <div class="window">
+          <div class="window-bar">photo_booth <span class="dots"></span></div>
+          <div class="window-body">
+            <img class="teaser-img" src="images/broccoli-hottub.jpg" alt="A broccoli relaxing in a hot tub">
+            <h2>Photo Booth</h2>
+            <p>Put YOUR face on the hot tub broccoli!</p>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- ===== RANDOM FACT BOX ===== -->
+    <div class="window pink">
+      <div class="window-bar">broccoli_fact.txt <span class="dots"></span></div>
+      <div class="window-body center">
+        <p id="factText" class="bubbly" style="font-size:1.4rem"></p>
+        <button class="btn white" onclick="showRandomFact()">🎲 Another fact!</button>
+      </div>
+    </div>
+
+    <footer>made with 💚 and 🥦 by students &nbsp;|&nbsp; iLoveBroccoli.com</footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="questions.js"></script>
+  <script src="music.js"></script>
+  <script>
+    // --- Click to enter: hide the splash and start the song ---
+    const splash = document.getElementById("splash");
+    splash.addEventListener("click", function () {
+      splash.classList.add("hidden");
+      playThemeSong();
+      try { sessionStorage.setItem("entered", "yes"); } catch (e) {}
+    });
+    // Only show the splash screen the first time someone visits
+    try { if (sessionStorage.getItem("entered")) splash.classList.add("hidden"); } catch (e) {}
+
+    // --- Random fact box: picks a fact from the trivia questions ---
+    function showRandomFact() {
+      const all = QUIZZES.facts.questions.concat(QUIZZES.types.questions);
+      const pick = all[Math.floor(Math.random() * all.length)];
+      document.getElementById("factText").textContent = "🥦 " + pick.fact;
+    }
+    showRandomFact();
+  </script>
+</body>
+</html>

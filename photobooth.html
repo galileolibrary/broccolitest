@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth | iLoveBroccoli.com 🥦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER (same on every page) ===== -->
+    <header class="site-header">
+      <a class="logo" href="index.html">iLoveBroccoli<span class="dotcom">.com</span></a>
+      <span><span class="sparkle">✦</span> <b>the greenest site on the web</b> <span class="sparkle">✦</span></span>
+    </header>
+    <nav class="tabs">
+      <a href="index.html">🏠 Home</a>
+      <a href="games.html">🎮 Games</a>
+      <a href="broccolitube.html">📺 Broccoli-tube</a>
+      <a href="photobooth.html" class="active">📸 Photo Booth</a>
+    </nav>
+    <div class="ticker"><span>📸 BROCCOLI PHOTO BOOTH ✦ PUT YOUR FACE IN THE HOT TUB ✦ SHARE IT WITH YOUR FRIENDS 🥦</span></div>
+    <br>
+
+    <div class="window">
+      <div class="window-bar">photo_booth.exe <span class="dots"></span></div>
+      <div class="window-body">
+
+        <!-- LIVE CAMERA VIEW (before the picture is taken) -->
+        <div id="liveView">
+          <div class="booth-stage">
+            <canvas id="boothCanvas" width="1280" height="720"></canvas>
+            <div class="countdown" id="countdown">3</div>
+          </div>
+          <div class="booth-controls">
+            <button class="btn pink" id="cameraBtn">📷 Turn on my camera</button>
+            <button class="btn hidden" id="snapBtn">📸 Take the picture!</button>
+            <label class="hidden" id="zoomLabel">🔍 Zoom
+              <input type="range" id="zoom" min="1" max="3" step="0.1" value="1.8">
+            </label>
+          </div>
+          <p class="note" id="boothMessage">
+            Line your face up inside the oval, then snap!<br>
+            🔒 Your photo never leaves your device. We don't save anything.
+          </p>
+        </div>
+
+        <!-- FINISHED PICTURE (after the picture is taken) -->
+        <div id="resultView" class="hidden">
+          <img id="resultImg" alt="Your broccoli photo">
+          <div class="booth-controls">
+            <button class="btn pink" id="shareBtn">📤 Share</button>
+            <a class="btn" id="saveBtn" download="ilovebroccoli.jpg">💾 Save picture</a>
+            <button class="btn white" id="retakeBtn">🔁 Retake</button>
+          </div>
+          <p class="note"><span id="shareTip">Tap <b>Share</b> to send it to your friends or post it to your story!</span><br>
+            When you leave this page, the picture is gone forever. 🫡</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>made with 💚 and 🥦 by students &nbsp;|&nbsp; iLoveBroccoli.com</footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="photobooth.js"></script>
+</body>
+</html>

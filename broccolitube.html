@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broccoli-tube | iLoveBroccoli.com 🥦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER (same on every page) ===== -->
+    <header class="site-header">
+      <a class="logo" href="index.html">iLoveBroccoli<span class="dotcom">.com</span></a>
+      <span><span class="sparkle">✦</span> <b>the greenest site on the web</b> <span class="sparkle">✦</span></span>
+    </header>
+    <nav class="tabs">
+      <a href="index.html">🏠 Home</a>
+      <a href="games.html">🎮 Games</a>
+      <a href="broccolitube.html" class="active">📺 Broccoli-tube</a>
+      <a href="photobooth.html">📸 Photo Booth</a>
+    </nav>
+    <div class="ticker"><span>📺 BROCCOLI-TUBE ✦ VIDEOS BY US, FOR YOU ✦ MORE COMING SOON 🥦</span></div>
+    <br>
+
+    <div class="window pink">
+      <div class="window-bar">broccoli-tube.exe <span class="dots"></span></div>
+      <div class="window-body">
+        <h1 style="color:var(--pink)">📺 Broccoli-tube</h1>
+        <p>Our funny videos, plus interviews with students and teachers about the world's greatest vegetable.</p>
+      </div>
+    </div>
+
+    <!-- the TVs get added here by the script below, using videos.js -->
+    <section class="grid" id="videoList"></section>
+
+    <footer>made with 💚 and 🥦 by students &nbsp;|&nbsp; iLoveBroccoli.com</footer>
+  </div>
+
+  <script src="videos.js"></script>
+  <script>
+    // Turns a normal YouTube link into the "embed" link that plays inside the page
+    function youtubeEmbedLink(link) {
+      const match = (link || "").match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([A-Za-z0-9_-]{11})/);
+      return match ? "https://www.youtube-nocookie.com/embed/" + match[1] : null;
+    }
+
+    VIDEOS.forEach(function (video) {
+      const embed = youtubeEmbedLink(video.youtube);
+      const tv = document.createElement("div");
+      tv.className = "tv";
+      tv.innerHTML =
+        '<div class="tv-screen">' +
+          (embed
+            ? '<iframe src="' + embed + '" allowfullscreen allow="encrypted-media; picture-in-picture"></iframe>'
+            : '<div class="static">📡 Coming soon!</div>') +
+        '</div><h3></h3><p></p>';
+      tv.querySelector("h3").textContent = video.title;
+      tv.querySelector("p").textContent = video.description;
+      document.getElementById("videoList").appendChild(tv);
+    });
+  </script>
+</body>
+</html>
